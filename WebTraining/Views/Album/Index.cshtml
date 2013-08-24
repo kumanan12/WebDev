@@ -4,7 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Album Collection</h2>
+@*
+<form action ="/Home/Search" method ="get">
+    <input type ="text" name ="q" /> 
+    <input type ="submit" value ="Search" /> 
+</ form >
+*@
+@using (Html.BeginForm("Search", "Album"))
+{
+    <input type="text" name="q" /> 
+    <input type="submit" value="Search" /> 
+}
+
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,7 +25,7 @@
 <table>
     <tr>
         <th>
-           <h3 style="color:red"> @Html.DisplayNameFor(model => model.Title)</h3>
+            <h3 style="color: red">@Html.DisplayNameFor(model => model.Title)</h3>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ArtistId)
@@ -20,20 +33,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ArtistId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AlbumId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AlbumId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AlbumId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtistId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AlbumId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.AlbumId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.AlbumId })
+            </td>
+        </tr>
+    }
 
 </table>

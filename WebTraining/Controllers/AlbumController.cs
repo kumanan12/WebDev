@@ -13,15 +13,27 @@ namespace WebTraining.Controllers
         //
         // GET: /Album/
         
-        public ActionResult Index()
+        public ActionResult Index(string q)
         {
             using (var ctx=new ChinookEntities())
             {
-               //var albumCollection= ctx.Albums.ToList();
-                var albumCollection=ctx.Albums.OrderByDescending(t => t.AlbumId).ToList();
+
+                var albumCollection = ctx.Albums.OrderByDescending(t => t.AlbumId).ToList();
                 return View(albumCollection);
             }
            
+        }
+
+        public ActionResult Search(string q)
+        {
+            using (var ctx = new ChinookEntities())
+            {
+
+                //var albumCollection=ctx.Albums.OrderByDescending(t => t.AlbumId).ToList();
+                var albumCollection = ctx.Albums.Where(t => t.Title.Contains(q)).ToList();
+                return View("Index",albumCollection);
+            }
+
         }
 
         public ActionResult Edit(int id)
@@ -62,8 +74,14 @@ namespace WebTraining.Controllers
 
         public ActionResult Create()
         {
-            var album = new Album();
-            return View(album);
+            using (var ctx = new ChinookEntities())
+            {
+                var album = new Album();
+                ViewBag.ArtistId = new SelectList(ctx.Artists.ToList(), "ArtistId", "Name");
+                ViewBag.StudentName = "Sriram";
+                return View(album);
+            }
+           
 
         }
 
@@ -75,7 +93,8 @@ namespace WebTraining.Controllers
 
                 return View();
             }
-               
+
+           
             using (var ctx = new ChinookEntities())
             {
                 ctx.Albums.Add(album);
@@ -104,5 +123,9 @@ namespace WebTraining.Controllers
 
         }
 
+        public ActionResult UpdateAlbum(Album album)
+        {
+            return Content("Updated"); 
+        }
     }
 }

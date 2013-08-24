@@ -5,7 +5,10 @@
 }
 
 <h2>Create</h2>
+@*
 
+@using (Html.BeginForm("UpdateAlbum","Album",FormMethod.Get))
+*@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
@@ -22,9 +25,11 @@
 
         <div class="editor-label">
             @Html.LabelFor(model => model.ArtistId)
+            
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ArtistId)
+            @*  @Html.EditorFor(model => model.ArtistId)*@
+            @Html.DropDownList("ArtistId","Please Select")
             @Html.ValidationMessageFor(model => model.ArtistId)
         </div>
 
