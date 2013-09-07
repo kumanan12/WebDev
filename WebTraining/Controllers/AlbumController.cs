@@ -13,11 +13,17 @@ namespace WebTraining.Controllers
         //
         // GET: /Album/
         
-        public ActionResult Index(string q)
+        public ActionResult Index(string q, int pageIndex, int pageSize)
         {
             using (var ctx=new ChinookEntities())
             {
+                if (pageSize==0)
+                {
+                    pageSize = 50;
+                }
 
+                var skipped = pageIndex*pageSize;
+                ctx.Albums.Where(t => t.Title.Contains("a")).Skip(pageIndex).Take(pageSize);
                 var albumCollection = ctx.Albums.OrderByDescending(t => t.AlbumId).ToList();
                 return View(albumCollection);
             }
@@ -43,9 +49,7 @@ namespace WebTraining.Controllers
             {
                 var album = ctx.Albums.Single(t=>t.AlbumId==id);
                 return View(album);
-            }
-
-        }
+            }}
 
         public ActionResult Details(int id)
         {

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e195a2cacbf6400e8bfe352c2c9fbf20" Name="Diagram1">
+      <Diagram DiagramId="9b45078c56a540d3b5728acbece850cd" Name="Diagram1">
         <EntityTypeShape EntityType="ChinookModel.Album" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ChinookModel.Artist" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ChinookModel.Customer" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />

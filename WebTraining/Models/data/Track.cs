@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace WebTraining.Models.data
 {
     using System;
@@ -23,7 +21,6 @@ namespace WebTraining.Models.data
         }
     
         public int TrackId { get; set; }
-        [Required]
         public string Name { get; set; }
         public Nullable<int> AlbumId { get; set; }
         public int MediaTypeId { get; set; }

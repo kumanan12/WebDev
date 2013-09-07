@@ -7,9 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-using System.Web.Services.Description;
-
 namespace WebTraining.Models.data
 {
     using System;
@@ -22,15 +19,8 @@ namespace WebTraining.Models.data
             this.Tracks = new HashSet<Track>();
         }
     
-
         public int AlbumId { get; set; }
-
-        [RegularExpression(@"[ A-Za-z0-9._% +-] +@[ A-Za-z0-9.-] +\.[ A-Za-z]{ 2,4}",ErrorMessage = "Invalid Email")]
         public string Title { get; set; }
-
-         [Required]
-        [Range(1,100)]
-
         public int ArtistId { get; set; }
     
         public virtual Artist Artist { get; set; }
