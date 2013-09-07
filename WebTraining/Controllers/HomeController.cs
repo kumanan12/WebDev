@@ -6,8 +6,10 @@ using System.Web.Mvc;
 
 namespace WebTraining.Controllers
 {
+     
     public class HomeController : Controller
     {
+         
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
@@ -15,6 +17,7 @@ namespace WebTraining.Controllers
             return View();
         }
 
+         [Authorize(Users = "kumanan12")]
         public ActionResult About()
         {
             ViewBag.Message = "Your app description page.";

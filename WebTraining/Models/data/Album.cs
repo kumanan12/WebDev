@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Web.Script.Serialization;
+
 namespace WebTraining.Models.data
 {
     using System;
@@ -22,8 +24,9 @@ namespace WebTraining.Models.data
         public int AlbumId { get; set; }
         public string Title { get; set; }
         public int ArtistId { get; set; }
-    
+      
         public virtual Artist Artist { get; set; }
+       
         public virtual ICollection<Track> Tracks { get; set; }
     }
 }
