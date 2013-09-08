@@ -14,15 +14,30 @@ namespace WebTraining.Controllers
        
         public ActionResult Index()
         {
-            List<Album> albumCollection = ctx.Albums.OrderByDescending(t => t.AlbumId).ToList();
+            List<Album> albumCollection = ctx.Albums.OrderByDescending(t => t.AlbumId).Take(20).ToList();
             return View(albumCollection);
         }
 
+        public ActionResult AjaxHome()
+        {
+            return View();
+        }
+        public ActionResult AjaxLabs()
+        {
+            return View();
+        }
        
         public JsonResult Detail(int id)
         {
             var album = ctx.Albums.Single(t => t.AlbumId == id);
             return Json(new{album.AlbumId,album.ArtistId,album.Title}, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult DetailAjax(int id)
+        {
+            var album = ctx.Albums.Single(t => t.AlbumId == id);
+            return PartialView("DetailAjax", album);
+
         }
 
         public ActionResult Custom(string q, int pageIndex, int pageSize)
@@ -40,7 +55,11 @@ namespace WebTraining.Controllers
 
         public ActionResult Search(string q)
         {
-            List<Album> albumCollection = ctx.Albums.Where(t => t.Title.Contains(q)).ToList();
+            var albumCollection = ctx.Albums.Where(t => t.Title.Contains(q)).ToList();
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("Search",albumCollection);
+            }
             return View("Index", albumCollection);
         }
 

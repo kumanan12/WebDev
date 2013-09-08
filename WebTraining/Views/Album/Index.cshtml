@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    
 }
 
 <h2>Album Collection</h2>
@@ -13,8 +14,8 @@
 *@
 @using (Html.BeginForm("Search", "Album"))
 {
-    <input type="text" name="q" /> 
-    <input type="submit" value="Search" /> 
+    <input type="text" id="q" name="q" /> 
+    <input id="btnSearch" type="submit" value="Search" /> 
 }
 
 
@@ -22,7 +23,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
+<table style="width:50%;display: inline;float:left">
     <tr>
         <th>
             <h3 style="color: red">@Html.DisplayNameFor(model => model.Title)</h3>
@@ -44,10 +45,28 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.AlbumId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.AlbumId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.AlbumId })
+                @Html.ActionLink("Details", "Details", new { id = item.AlbumId }) |
+             
+                @Ajax.ActionLink("Detail AJAX", "DetailAjax", new {id=item.AlbumId},  new AjaxOptions{ UpdateTargetId ="albumDetail", InsertionMode = InsertionMode.Replace, HttpMethod =" GET" })
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.AlbumId })*@
             </td>
         </tr>
     }
 
 </table>
+
+<div id="albumDetail" style="width:200px;display:inline;background-color:burlywood;color: blue;">
+    Initial text
+
+</div>
+<script type="text/javascript">
+    $(function () {
+        alert("hello");
+        $("#btnSearch").bind('click',function() {
+            var searchText = $("#q").val();
+            alert(searchText);
+        }
+             
+        );
+    });
+</script>

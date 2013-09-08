@@ -283,6 +283,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Chinook.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Images\ajax-loader.gif" />
     <Content Include="Models\data\Chinook.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Chinook.edmx</DependentUpon>
@@ -367,6 +368,11 @@
     <Content Include="Views\Track\Edit.cshtml" />
     <Content Include="Views\Track\Delete.cshtml" />
     <Content Include="Views\Album\Custom.cshtml" />
+    <Content Include="Views\Album\DetailAjax.cshtml" />
+    <Content Include="Views\Shared\_layoutSimple.cshtml" />
+    <Content Include="Views\Album\AjaxLabs.cshtml" />
+    <Content Include="Views\Album\AjaxHome.cshtml" />
+    <Content Include="Views\Album\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\" />

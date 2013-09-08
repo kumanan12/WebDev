@@ -1,0 +1,19 @@
+﻿@model WebTraining.Models.data.Album
+
+<fieldset>
+    <legend>Album Details</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Title)
+    </div>
+    <div class="display-field" style="color: #000">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ArtistId)
+    </div>
+    <div class="display-field" style="color: #000">
+        @Html.DisplayFor(model => model.ArtistId)
+    </div>
+</fieldset>

@@ -5,7 +5,8 @@
         <title>@ViewBag.Title - My ASP.NET MVC Application</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
+      @*  @Styles.Render("~/Content/css")*@
+        @Styles.Render("~/Content/themes/base/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
@@ -29,9 +30,12 @@
             </div>
         </header>
         <div id="body">
+            <div style="margin:20px">
+                  @RenderBody()
+            </div>
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
+              
             </section>
         </div>
         <footer>
@@ -43,6 +47,23 @@
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
+    @*    @Scripts.Render("~/bundles/jqueryval")*@
         @RenderSection("scripts", required: false)
+       <script type="text/javascript">
+           $(function () {
+             
+               $("#btnSearch").bind('click', function () {
+                   var searchText = $("#q").val();
+                   if (searchText === "") {
+                       alert("empty");
+                       this.preventDefault();
+                       return false;
+                   }
+                   alert(searchText);
+               }
+
+               );
+           });
+</script>
     </body>
 </html>

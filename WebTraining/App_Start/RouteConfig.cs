@@ -13,7 +13,7 @@ namespace WebTraining
                    new { controller = "Home", action = "index"}
                    );
             routes.MapRoute("Default", "{controller}/{action}/{id}",
-                new {controller = "Album", action = "index", id = UrlParameter.Optional}
+                new { controller = "Album", action = "index", id = UrlParameter.Optional }
                 );
             routes.MapRoute(
                "Product",
